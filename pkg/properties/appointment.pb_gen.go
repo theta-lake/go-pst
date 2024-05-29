@@ -2200,6 +2200,7 @@ func (z *Appointment) EncodeMsg(en *msgp.Writer) (err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(120)
 	var zb0001Mask [2]uint64 /* 120 bits */
+	_ = zb0001Mask
 	if z.AllAttendeesString == nil {
 		zb0001Len--
 		zb0001Mask[0] |= 0x1
@@ -4965,6 +4966,7 @@ func (z *Appointment) MarshalMsg(b []byte) (o []byte, err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(120)
 	var zb0001Mask [2]uint64 /* 120 bits */
+	_ = zb0001Mask
 	if z.AllAttendeesString == nil {
 		zb0001Len--
 		zb0001Mask[0] |= 0x1

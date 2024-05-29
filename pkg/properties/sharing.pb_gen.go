@@ -1300,6 +1300,7 @@ func (z *Sharing) EncodeMsg(en *msgp.Writer) (err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(70)
 	var zb0001Mask [2]uint64 /* 70 bits */
+	_ = zb0001Mask
 	if z.SharingAnonymity == nil {
 		zb0001Len--
 		zb0001Mask[0] |= 0x1
@@ -2837,6 +2838,7 @@ func (z *Sharing) MarshalMsg(b []byte) (o []byte, err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(70)
 	var zb0001Mask [2]uint64 /* 70 bits */
+	_ = zb0001Mask
 	if z.SharingAnonymity == nil {
 		zb0001Len--
 		zb0001Mask[0] |= 0x1

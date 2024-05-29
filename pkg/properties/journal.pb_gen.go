@@ -220,6 +220,7 @@ func (z *Journal) EncodeMsg(en *msgp.Writer) (err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(10)
 	var zb0001Mask uint16 /* 10 bits */
+	_ = zb0001Mask
 	if z.LogDocumentPosted == nil {
 		zb0001Len--
 		zb0001Mask |= 0x1
@@ -467,6 +468,7 @@ func (z *Journal) MarshalMsg(b []byte) (o []byte, err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(10)
 	var zb0001Mask uint16 /* 10 bits */
+	_ = zb0001Mask
 	if z.LogDocumentPosted == nil {
 		zb0001Len--
 		zb0001Mask |= 0x1

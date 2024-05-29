@@ -2002,6 +2002,7 @@ func (z *Contact) EncodeMsg(en *msgp.Writer) (err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(109)
 	var zb0001Mask [2]uint64 /* 109 bits */
+	_ = zb0001Mask
 	if z.AddressBookProviderArrayType == nil {
 		zb0001Len--
 		zb0001Mask[0] |= 0x1
@@ -4514,6 +4515,7 @@ func (z *Contact) MarshalMsg(b []byte) (o []byte, err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(109)
 	var zb0001Mask [2]uint64 /* 109 bits */
+	_ = zb0001Mask
 	if z.AddressBookProviderArrayType == nil {
 		zb0001Len--
 		zb0001Mask[0] |= 0x1

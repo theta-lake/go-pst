@@ -742,6 +742,7 @@ func (z *Task) EncodeMsg(en *msgp.Writer) (err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(39)
 	var zb0001Mask uint64 /* 39 bits */
+	_ = zb0001Mask
 	if z.FlagString == nil {
 		zb0001Len--
 		zb0001Mask |= 0x1
@@ -1656,6 +1657,7 @@ func (z *Task) MarshalMsg(b []byte) (o []byte, err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(39)
 	var zb0001Mask uint64 /* 39 bits */
+	_ = zb0001Mask
 	if z.FlagString == nil {
 		zb0001Len--
 		zb0001Mask |= 0x1

@@ -18,13 +18,14 @@ package pst_test
 
 import (
 	"fmt"
-	"github.com/mooijtech/go-pst/v6/pkg"
-	"github.com/mooijtech/go-pst/v6/pkg/properties"
-	"github.com/rotisserie/eris"
-	"golang.org/x/text/encoding"
 	"os"
 	"testing"
 	"time"
+
+	"github.com/rotisserie/eris"
+	"github.com/theta-lake/go-pst/v6/pkg"
+	"github.com/theta-lake/go-pst/v6/pkg/properties"
+	"golang.org/x/text/encoding"
 
 	charsets "github.com/emersion/go-message/charset"
 )
@@ -84,19 +85,19 @@ func TestExample(t *testing.T) {
 
 			switch messageProperties := message.Properties.(type) {
 			case *properties.Appointment:
-				//fmt.Printf("Appointment: %s\n", messageProperties.String())
+				// fmt.Printf("Appointment: %s\n", messageProperties.String())
 			case *properties.Contact:
-				//fmt.Printf("Contact: %s\n", messageProperties.String())
+				// fmt.Printf("Contact: %s\n", messageProperties.String())
 			case *properties.Task:
-				//fmt.Printf("Task: %s\n", messageProperties.String())
+				// fmt.Printf("Task: %s\n", messageProperties.String())
 			case *properties.RSS:
-				//fmt.Printf("RSS: %s\n", messageProperties.String())
+				// fmt.Printf("RSS: %s\n", messageProperties.String())
 			case *properties.AddressBook:
-				//fmt.Printf("Address book: %s\n", messageProperties.String())
+				// fmt.Printf("Address book: %s\n", messageProperties.String())
 			case *properties.Message:
 				fmt.Printf("Subject: %s\n", messageProperties.GetSubject())
 			case *properties.Note:
-				//fmt.Printf("Note: %s\n", messageProperties.String())
+				// fmt.Printf("Note: %s\n", messageProperties.String())
 			default:
 				fmt.Printf("Unknown message type\n")
 			}

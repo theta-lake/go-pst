@@ -2488,6 +2488,7 @@ func (z *Message) EncodeMsg(en *msgp.Writer) (err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(136)
 	var zb0001Mask [3]uint64 /* 136 bits */
+	_ = zb0001Mask
 	if z.AutoProcessState == nil {
 		zb0001Len--
 		zb0001Mask[0] |= 0x1
@@ -5573,6 +5574,7 @@ func (z *Message) MarshalMsg(b []byte) (o []byte, err error) {
 	// omitempty: check for empty values
 	zb0001Len := uint32(136)
 	var zb0001Mask [3]uint64 /* 136 bits */
+	_ = zb0001Mask
 	if z.AutoProcessState == nil {
 		zb0001Len--
 		zb0001Mask[0] |= 0x1
