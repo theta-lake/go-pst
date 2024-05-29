@@ -251,6 +251,8 @@ func (file *File) GetMessage(identifier Identifier) (*Message, error) {
 				messageProperties = &properties.RSS{}
 			} else if messageClass == "IPM.DistList" {
 				messageProperties = &properties.AddressBook{}
+			} else if messageClass == "IPM.SkypeTeams.Message" {
+				messageProperties = &properties.TeamMessage{}
 			} else {
 				fmt.Printf("Unmapped message class \"%s\", falling back to properties.Message...\n", messageClass)
 				messageProperties = &properties.Message{}

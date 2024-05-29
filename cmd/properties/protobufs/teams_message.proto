@@ -1,0 +1,67 @@
+// go-pst is a library for reading Personal Storage Table (.pst) files (written in Go/Golang).
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+// http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+
+//go:generate msgp -tests=false
+
+syntax = "proto3";
+option go_package = "github.com/theta-lake/go-pst;properties";
+
+// Unlike the other proto files this one is hand generated on my best understanding by looking at what the IPM.SkypeTeams.Message type returned
+message TeamMessage {
+  // Contains the current time, in UTC, when the email message is submitted.
+  optional int64 client_submit_time = 1; // @gotags: msg:"5764,omitempty"
+  // Contains the time, in UTC, that the object was created.
+  optional int64 creation_time = 2; // @gotags: msg:"1229564,omitempty"
+  // Contains the name of the creator of a Message object.
+  optional string creator_name = 3; // @gotags: msg:"1637631,omitempty"
+  // Contains a list of the primary recipient display names, separated by semicolons, when an email message has primary recipients .
+  optional string display_to = 4; // @gotags: msg:"358831,omitempty"#
+  // Indicates the level of importance assigned by the end user to the Message object.
+  optional int32 importance = 5; // @gotags: msg:"233,omitempty"
+  // Corresponds to the message-id field.
+  optional string internet_message_id = 6; // @gotags: msg:"414931,omitempty"
+  // Contains the time, in UTC, of the last modification to the object.
+  optional int64 last_modification_time = 7; // @gotags: msg:"1229664,omitempty"
+  // Specifies the time (in UTC) when the server received the message.
+  optional int64 message_delivery_time = 8; // @gotags: msg:"359064,omitempty"
+  // Specifies the status of the Message object.
+  optional int32 message_flags = 9; // @gotags: msg:"35913,omitempty"
+  // Contains the size, in bytes, consumed by the Message object on the server.
+  optional int32 message_size = 10; // @gotags: msg:"35923,omitempty"
+  // Contains the value of the original message sender's PidTagSenderAddressType property (section 2.1000).
+  optional string original_sender_address_type = 11; // @gotags: msg:"10231,omitempty"
+  // Contains the value of the original message sender's PidTagSenderEmailAddress property (section 2.1001).
+  optional string original_sender_email_address = 12; // @gotags: msg:"10331,omitempty"
+  // Contains the value of the original message sender's PidTagSenderName property (section 2.1004), and is set on delivery report messages.
+  optional string original_sender_name = 13; // @gotags: msg:"9031,omitempty"
+  // Contains an email address type.
+  optional string sent_representing_address_type = 14; // @gotags: msg:"10031,omitempty"
+  // Contains an email address for the end user who is represented by the sending mailbox owner.
+  optional string sent_representing_email_address = 15; // @gotags: msg:"10131,omitempty"
+  // Contains the display name for the end user who is represented by the sending mailbox owner.
+  optional string sent_representing_name = 16; // @gotags: msg:"6631,omitempty"
+
+  optional string workload_notification_context = 17; // @gotags: msg:"3283131,omitempty"
+  // Contains the text from the message 328313
+  optional string message_content = 18; // @gotags: msg:"1634531,omitempty"
+  // Contains the thread_id the message belongs to
+  optional string thread_id = 19; // @gotags: msg:"1393331,omitempty"
+  // Contains the thread type
+  optional string thread_type = 20; // @gotags: msg:"3281531,omitempty"
+  // Contains the item id
+  optional string skype_item_id = 21; // @gotags: msg:"1392231,omitempty"
+  // Contain the tenants id
+  optional string tenant_id = 22; // @gotags: msg:"3284331,omitempty"
+  optional string participants = 23; // @gotags: msg:"3284031,omitempty"
+}
