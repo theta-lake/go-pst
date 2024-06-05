@@ -366,24 +366,6 @@ func (z *TeamMessage) DecodeMsg(dc *msgp.Reader) (err error) {
 					return
 				}
 			}
-		case "3281531":
-			if dc.IsNil() {
-				err = dc.ReadNil()
-				if err != nil {
-					err = msgp.WrapError(err, "ThreadType")
-					return
-				}
-				z.ThreadType = nil
-			} else {
-				if z.ThreadType == nil {
-					z.ThreadType = new(string)
-				}
-				*z.ThreadType, err = dc.ReadString()
-				if err != nil {
-					err = msgp.WrapError(err, "ThreadType")
-					return
-				}
-			}
 		case "1392231":
 			if dc.IsNil() {
 				err = dc.ReadNil()
@@ -402,39 +384,21 @@ func (z *TeamMessage) DecodeMsg(dc *msgp.Reader) (err error) {
 					return
 				}
 			}
-		case "3284331":
+		case "5531":
 			if dc.IsNil() {
 				err = dc.ReadNil()
 				if err != nil {
-					err = msgp.WrapError(err, "TenantId")
+					err = msgp.WrapError(err, "Subject")
 					return
 				}
-				z.TenantId = nil
+				z.Subject = nil
 			} else {
-				if z.TenantId == nil {
-					z.TenantId = new(string)
+				if z.Subject == nil {
+					z.Subject = new(string)
 				}
-				*z.TenantId, err = dc.ReadString()
+				*z.Subject, err = dc.ReadString()
 				if err != nil {
-					err = msgp.WrapError(err, "TenantId")
-					return
-				}
-			}
-		case "3284031":
-			if dc.IsNil() {
-				err = dc.ReadNil()
-				if err != nil {
-					err = msgp.WrapError(err, "Participants")
-					return
-				}
-				z.Participants = nil
-			} else {
-				if z.Participants == nil {
-					z.Participants = new(string)
-				}
-				*z.Participants, err = dc.ReadString()
-				if err != nil {
-					err = msgp.WrapError(err, "Participants")
+					err = msgp.WrapError(err, "Subject")
 					return
 				}
 			}
@@ -452,8 +416,8 @@ func (z *TeamMessage) DecodeMsg(dc *msgp.Reader) (err error) {
 // EncodeMsg implements msgp.Encodable
 func (z *TeamMessage) EncodeMsg(en *msgp.Writer) (err error) {
 	// omitempty: check for empty values
-	zb0001Len := uint32(23)
-	var zb0001Mask uint32 /* 23 bits */
+	zb0001Len := uint32(21)
+	var zb0001Mask uint32 /* 21 bits */
 	_ = zb0001Mask
 	if z.ClientSubmitTime == nil {
 		zb0001Len--
@@ -531,21 +495,13 @@ func (z *TeamMessage) EncodeMsg(en *msgp.Writer) (err error) {
 		zb0001Len--
 		zb0001Mask |= 0x40000
 	}
-	if z.ThreadType == nil {
+	if z.SkypeItemId == nil {
 		zb0001Len--
 		zb0001Mask |= 0x80000
 	}
-	if z.SkypeItemId == nil {
+	if z.Subject == nil {
 		zb0001Len--
 		zb0001Mask |= 0x100000
-	}
-	if z.TenantId == nil {
-		zb0001Len--
-		zb0001Mask |= 0x200000
-	}
-	if z.Participants == nil {
-		zb0001Len--
-		zb0001Mask |= 0x400000
 	}
 	// variable map header, size zb0001Len
 	err = en.WriteMapHeader(zb0001Len)
@@ -917,25 +873,6 @@ func (z *TeamMessage) EncodeMsg(en *msgp.Writer) (err error) {
 		}
 	}
 	if (zb0001Mask & 0x80000) == 0 { // if not empty
-		// write "3281531"
-		err = en.Append(0xa7, 0x33, 0x32, 0x38, 0x31, 0x35, 0x33, 0x31)
-		if err != nil {
-			return
-		}
-		if z.ThreadType == nil {
-			err = en.WriteNil()
-			if err != nil {
-				return
-			}
-		} else {
-			err = en.WriteString(*z.ThreadType)
-			if err != nil {
-				err = msgp.WrapError(err, "ThreadType")
-				return
-			}
-		}
-	}
-	if (zb0001Mask & 0x100000) == 0 { // if not empty
 		// write "1392231"
 		err = en.Append(0xa7, 0x31, 0x33, 0x39, 0x32, 0x32, 0x33, 0x31)
 		if err != nil {
@@ -954,40 +891,21 @@ func (z *TeamMessage) EncodeMsg(en *msgp.Writer) (err error) {
 			}
 		}
 	}
-	if (zb0001Mask & 0x200000) == 0 { // if not empty
-		// write "3284331"
-		err = en.Append(0xa7, 0x33, 0x32, 0x38, 0x34, 0x33, 0x33, 0x31)
+	if (zb0001Mask & 0x100000) == 0 { // if not empty
+		// write "5531"
+		err = en.Append(0xa4, 0x35, 0x35, 0x33, 0x31)
 		if err != nil {
 			return
 		}
-		if z.TenantId == nil {
+		if z.Subject == nil {
 			err = en.WriteNil()
 			if err != nil {
 				return
 			}
 		} else {
-			err = en.WriteString(*z.TenantId)
+			err = en.WriteString(*z.Subject)
 			if err != nil {
-				err = msgp.WrapError(err, "TenantId")
-				return
-			}
-		}
-	}
-	if (zb0001Mask & 0x400000) == 0 { // if not empty
-		// write "3284031"
-		err = en.Append(0xa7, 0x33, 0x32, 0x38, 0x34, 0x30, 0x33, 0x31)
-		if err != nil {
-			return
-		}
-		if z.Participants == nil {
-			err = en.WriteNil()
-			if err != nil {
-				return
-			}
-		} else {
-			err = en.WriteString(*z.Participants)
-			if err != nil {
-				err = msgp.WrapError(err, "Participants")
+				err = msgp.WrapError(err, "Subject")
 				return
 			}
 		}
@@ -999,8 +917,8 @@ func (z *TeamMessage) EncodeMsg(en *msgp.Writer) (err error) {
 func (z *TeamMessage) MarshalMsg(b []byte) (o []byte, err error) {
 	o = msgp.Require(b, z.Msgsize())
 	// omitempty: check for empty values
-	zb0001Len := uint32(23)
-	var zb0001Mask uint32 /* 23 bits */
+	zb0001Len := uint32(21)
+	var zb0001Mask uint32 /* 21 bits */
 	_ = zb0001Mask
 	if z.ClientSubmitTime == nil {
 		zb0001Len--
@@ -1078,21 +996,13 @@ func (z *TeamMessage) MarshalMsg(b []byte) (o []byte, err error) {
 		zb0001Len--
 		zb0001Mask |= 0x40000
 	}
-	if z.ThreadType == nil {
+	if z.SkypeItemId == nil {
 		zb0001Len--
 		zb0001Mask |= 0x80000
 	}
-	if z.SkypeItemId == nil {
+	if z.Subject == nil {
 		zb0001Len--
 		zb0001Mask |= 0x100000
-	}
-	if z.TenantId == nil {
-		zb0001Len--
-		zb0001Mask |= 0x200000
-	}
-	if z.Participants == nil {
-		zb0001Len--
-		zb0001Mask |= 0x400000
 	}
 	// variable map header, size zb0001Len
 	o = msgp.AppendMapHeader(o, zb0001Len)
@@ -1271,15 +1181,6 @@ func (z *TeamMessage) MarshalMsg(b []byte) (o []byte, err error) {
 		}
 	}
 	if (zb0001Mask & 0x80000) == 0 { // if not empty
-		// string "3281531"
-		o = append(o, 0xa7, 0x33, 0x32, 0x38, 0x31, 0x35, 0x33, 0x31)
-		if z.ThreadType == nil {
-			o = msgp.AppendNil(o)
-		} else {
-			o = msgp.AppendString(o, *z.ThreadType)
-		}
-	}
-	if (zb0001Mask & 0x100000) == 0 { // if not empty
 		// string "1392231"
 		o = append(o, 0xa7, 0x31, 0x33, 0x39, 0x32, 0x32, 0x33, 0x31)
 		if z.SkypeItemId == nil {
@@ -1288,22 +1189,13 @@ func (z *TeamMessage) MarshalMsg(b []byte) (o []byte, err error) {
 			o = msgp.AppendString(o, *z.SkypeItemId)
 		}
 	}
-	if (zb0001Mask & 0x200000) == 0 { // if not empty
-		// string "3284331"
-		o = append(o, 0xa7, 0x33, 0x32, 0x38, 0x34, 0x33, 0x33, 0x31)
-		if z.TenantId == nil {
+	if (zb0001Mask & 0x100000) == 0 { // if not empty
+		// string "5531"
+		o = append(o, 0xa4, 0x35, 0x35, 0x33, 0x31)
+		if z.Subject == nil {
 			o = msgp.AppendNil(o)
 		} else {
-			o = msgp.AppendString(o, *z.TenantId)
-		}
-	}
-	if (zb0001Mask & 0x400000) == 0 { // if not empty
-		// string "3284031"
-		o = append(o, 0xa7, 0x33, 0x32, 0x38, 0x34, 0x30, 0x33, 0x31)
-		if z.Participants == nil {
-			o = msgp.AppendNil(o)
-		} else {
-			o = msgp.AppendString(o, *z.Participants)
+			o = msgp.AppendString(o, *z.Subject)
 		}
 	}
 	return
@@ -1650,23 +1542,6 @@ func (z *TeamMessage) UnmarshalMsg(bts []byte) (o []byte, err error) {
 					return
 				}
 			}
-		case "3281531":
-			if msgp.IsNil(bts) {
-				bts, err = msgp.ReadNilBytes(bts)
-				if err != nil {
-					return
-				}
-				z.ThreadType = nil
-			} else {
-				if z.ThreadType == nil {
-					z.ThreadType = new(string)
-				}
-				*z.ThreadType, bts, err = msgp.ReadStringBytes(bts)
-				if err != nil {
-					err = msgp.WrapError(err, "ThreadType")
-					return
-				}
-			}
 		case "1392231":
 			if msgp.IsNil(bts) {
 				bts, err = msgp.ReadNilBytes(bts)
@@ -1684,37 +1559,20 @@ func (z *TeamMessage) UnmarshalMsg(bts []byte) (o []byte, err error) {
 					return
 				}
 			}
-		case "3284331":
+		case "5531":
 			if msgp.IsNil(bts) {
 				bts, err = msgp.ReadNilBytes(bts)
 				if err != nil {
 					return
 				}
-				z.TenantId = nil
+				z.Subject = nil
 			} else {
-				if z.TenantId == nil {
-					z.TenantId = new(string)
+				if z.Subject == nil {
+					z.Subject = new(string)
 				}
-				*z.TenantId, bts, err = msgp.ReadStringBytes(bts)
+				*z.Subject, bts, err = msgp.ReadStringBytes(bts)
 				if err != nil {
-					err = msgp.WrapError(err, "TenantId")
-					return
-				}
-			}
-		case "3284031":
-			if msgp.IsNil(bts) {
-				bts, err = msgp.ReadNilBytes(bts)
-				if err != nil {
-					return
-				}
-				z.Participants = nil
-			} else {
-				if z.Participants == nil {
-					z.Participants = new(string)
-				}
-				*z.Participants, bts, err = msgp.ReadStringBytes(bts)
-				if err != nil {
-					err = msgp.WrapError(err, "Participants")
+					err = msgp.WrapError(err, "Subject")
 					return
 				}
 			}
@@ -1847,28 +1705,16 @@ func (z *TeamMessage) Msgsize() (s int) {
 		s += msgp.StringPrefixSize + len(*z.ThreadId)
 	}
 	s += 8
-	if z.ThreadType == nil {
-		s += msgp.NilSize
-	} else {
-		s += msgp.StringPrefixSize + len(*z.ThreadType)
-	}
-	s += 8
 	if z.SkypeItemId == nil {
 		s += msgp.NilSize
 	} else {
 		s += msgp.StringPrefixSize + len(*z.SkypeItemId)
 	}
-	s += 8
-	if z.TenantId == nil {
+	s += 5
+	if z.Subject == nil {
 		s += msgp.NilSize
 	} else {
-		s += msgp.StringPrefixSize + len(*z.TenantId)
-	}
-	s += 8
-	if z.Participants == nil {
-		s += msgp.NilSize
-	} else {
-		s += msgp.StringPrefixSize + len(*z.Participants)
+		s += msgp.StringPrefixSize + len(*z.Subject)
 	}
 	return
 }

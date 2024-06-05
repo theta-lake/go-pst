@@ -57,11 +57,8 @@ message TeamMessage {
   optional string message_content = 18; // @gotags: msg:"1634531,omitempty"
   // Contains the thread_id the message belongs to
   optional string thread_id = 19; // @gotags: msg:"1393331,omitempty"
-  // Contains the thread type
-  optional string thread_type = 20; // @gotags: msg:"3281531,omitempty"
   // Contains the item id
-  optional string skype_item_id = 21; // @gotags: msg:"1392231,omitempty"
-  // Contain the tenants id
-  optional string tenant_id = 22; // @gotags: msg:"3284331,omitempty"
-  optional string participants = 23; // @gotags: msg:"3284031,omitempty"
+  optional string skype_item_id = 20; // @gotags: msg:"1392231,omitempty"
+  // Contains the subject of the message.
+  optional string subject = 21; // @gotags: msg:"5531,omitempty"
 }
